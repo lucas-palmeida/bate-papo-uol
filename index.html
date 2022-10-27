@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tela-login esconder">
-        <div class="logo-login"><img src="images/logo-login.png" /></div>
+    <div class="tela-login">
+        <div class="caixa-logo"><img src="images/logo-login.png" /></div>
         <div class="caixa-login">
             <input type="text" class="nome-login" placeholder="Digite seu nome">
-            <button class="entrar-botao">Entrar</button>
+            <button class="entrar-botao" onclick="entrarNome()">Entrar</button>
         </div>
     </div>
     <header>
@@ -22,19 +22,14 @@
     </header>
     <main>
         <ul>
-            <li class="mensagem status"><p><span class="hora">(09:21:45)</span> <span class="usuario">João</span> entra na sala...</p></li>
-            <li class="mensagem normal"><p><span class="hora">(09:22:28)</span> <span class="usuario">João</span> para <span class="usuario">Todos</span>: Bom dia</p></li>
-            <li class="mensagem normal"><p><span class="hora">(09:22:38)</span> <span class="usuario">Maria</span> para <span class="usuario">João</span>: Oi João :)</p></li>
-            <li class="mensagem reservada"><p><span class="hora">(09:22:48)</span> <span class="usuario">João</span> reservadamente para <span class="usuario">Maria</span>:  Oi gatinha quer tc?</p></li>
-            <li class="mensagem status"><p><span class="hora">(09:22:58)</span> <span class="usuario">Maria</span> sai da sala...</p></li>
-            
         </ul>
     </main>
     <footer>
         <textarea class="escrever-mensagem" rows="1" placeholder="Escreva aqui..." onkeydown="ajustarCaixa(this)"></textarea>
-        <ion-icon name="paper-plane-outline" class="icone-enviar"></ion-icon>
+        <ion-icon name="paper-plane-outline" class="icone-enviar">Enviar</ion-icon>
     </footer>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
