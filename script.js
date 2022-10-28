@@ -7,19 +7,28 @@ function entrarNome(){
     axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nome)
     .then(autorizado)
     .catch(naoAutorizado);
-
-    buscarMensagens();
-    atualizaStatusMensagens();
 }
 
-function autorizado(autorizacao) {
-    console.log(autorizacao.status);
-    document.querySelector(".tela-login").classList.add("esconder");
+function autorizado(resposta) {
+    if(resposta.status === 200) {
+        console.log(resposta.status)
+        document.querySelector(".tela-login").classList.add("esconder");
+
+        buscarMensagens();
+        atualizaStatusMensagens();
+    }
 }
 
-function naoAutorizado(erro) {
-    alert("Tente outro nome.");
-    console.log(erro.status);
+function naoAutorizado(resposta) {
+    if(resposta.response.status === 400) {
+        console.log(resposta.response.status);
+        alert("Tente outro nome.");
+        nome = null;
+    }
+    else {
+        alert("Tente novamente em alguns instantes...");
+        console.log(resposta.response.status);
+    }
 }
 
 function atualizaStatusMensagens(){
@@ -73,4 +82,30 @@ function ajustarCaixa(caixa) {
             caixa.rows += 1;
         }
     }
+}
+
+function enviarMensagem() {
+    const texto = document.querySelector(".escrever-mensagem").value;
+    const mensagem = {
+        from: nome.name,
+        to: "Todos",
+        text: texto,
+        type: "message"
+    };
+
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
+    .then(deuCerto)
+    .catch(deuErrado);
+
+    document.querySelector(".escrever-mensagem").value = "";
+}
+
+function deuCerto(resposta) {
+    buscarMensagens();
+    alert("Mensagem enviada.");
+}
+
+function deuErrado(resposta) {
+    console.log(resposta.response.status);
+    alert("Mensagem não enviada.");
 }
