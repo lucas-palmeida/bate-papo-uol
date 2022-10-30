@@ -21,16 +21,44 @@
     <header>
         <div class="cabecalho">
             <img src="images/batepapo-uol-logo.png" class="logo-uol"/>
-            <ion-icon name="people" class="icone-participantes"></ion-icon>
+                <ion-icon name="people" class="icone-participantes" onclick="exibeMenuLateral()"></ion-icon>
         </div>
     </header>
     <main>
-        <ul>
+        <ul class="lista-mensagens">
         </ul>
     </main>
+    <aside class="esconder">
+        <div class="transparente" onclick="exibeMenuLateral()"></div>
+        <div class="menu-lateral">
+            <div class="seleciona-destinatario">
+                <p class="destinatario-texto">Escolha um contato para enviar mensagem:</p>
+            </div>
+            <ul class="lista-destinatarios">
+            </ul>
+            <div class="seleciona-visibilidade">
+                <p class="destinatario-texto">Escolha a visibilidade:</p>
+            </div>
+            <ul class="lista-visibilidade">
+                <li class="visibilidade selecionado" onclick="selecionarVisibilidade(this)" data-identifier="visibility">
+                    <ion-icon name="lock-open"></ion-icon>
+                    <p>Público</p>
+                    <ion-icon name="checkmark" class="check-verde"></ion-icon>
+                </li>
+                <li class="visibilidade" onclick="selecionarVisibilidade(this)" data-identifier="visibility">
+                    <ion-icon name="lock-closed"></ion-icon>
+                    <p>Reservadamente</p>
+                    <ion-icon name="checkmark" class="check-verde esconder"></ion-icon>
+                </li>
+            </ul>
+        </div>
+    </aside>
     <footer>
         <div class="enviar-mensagens">
-            <textarea class="escrever-mensagem" rows="1" placeholder="Escreva aqui..." onkeydown="ajustarCaixa(this)"></textarea>
+            <div>
+                <textarea class="escrever-mensagem" rows="1" placeholder="Escreva aqui..." onkeydown="ajustarCaixa(this)"></textarea>
+                <p class="reserva"></p>
+            </div>
             <ion-icon name="paper-plane-outline" class="icone-enviar" onclick="enviarMensagem()"></ion-icon>
         </div>
     </footer>
