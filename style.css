@@ -201,6 +201,7 @@ aside {
     width: 70%;
     height: 100%;
     background-color: #FFFFFF;
+    overflow: scroll;
 }
 
 .seleciona-destinatario {
@@ -249,7 +250,7 @@ aside {
     text-align: left;
 }
 
-.destinatario > ion-icon, visibilidade > ion-icon {
+.destinatario > ion-icon, .visibilidade > ion-icon {
     font-size: 24px;
     margin-right: 10px;
 }
